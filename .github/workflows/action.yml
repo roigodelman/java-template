@@ -18,14 +18,8 @@ jobs:
       - name: branch-name
         id: branch-name
         uses: tj-actions/branch-names@v5
-  #    - name: logs
-  #      run: echo "Deploying to production server on branch $GITHUB_REF"
-  #    - name: logs
-  #      run: echo "Deploying to production server on branch $GITHUB_HEAD_REF"
-  #    - name: logs
-  #      run: echo "Deploying to production server on branch $GITHUB_BASE_REF"
       - name: logs-branch-name
         run: |
           echo "Running on default: ${{ steps.branch-name.outputs.ref_branch }}"
       - name: docker
-        run: docker build -t ${{ steps.branch-name.outputs.ref_branch }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }} .
