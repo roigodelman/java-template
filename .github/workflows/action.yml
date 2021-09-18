@@ -5,6 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env: 
+      DOCKER_NAME:  ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }}
 
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +23,9 @@ jobs:
       - name: logs-branch-name
         run: |
           echo "Running on default: ${{ steps.branch-name.outputs.ref_branch }}"
+      - name: logs-branch-name
+        run: |
+          echo "test $DOCKER_NAME"
       - name: docker
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }} .
       - name: logs-create-docker
