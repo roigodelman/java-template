@@ -23,3 +23,7 @@ jobs:
           echo "Running on default: ${{ steps.branch-name.outputs.ref_branch }}"
       - name: docker
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }} .
+      - name: logs-create-docker
+        run: |
+          echo "Create docker: ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }}"
+        
