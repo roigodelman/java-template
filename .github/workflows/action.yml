@@ -13,8 +13,8 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+  #    - name: Build with Maven
+  #      run: mvn --batch-mode --update-snapshots verify
       - name: logs
         run: echo "Deploying to production server on branch $GITHUB_REF"
       - name: logs
@@ -22,6 +22,6 @@ jobs:
       - name: logs
         run: echo "Deploying to production server on branch $GITHUB_BASE_REF"
       - name: logs
-        run: echo "Deploying to production server on branch ${{ steps.branch-name.outputs.current_branch }}"
-      - name: docker
-        run: docker build -t a .
+        run: echo "Running on pr: ${{ steps.branch-name.outputs.current_branch }}"
+  #    - name: docker
+  #      run: docker build -t a .
