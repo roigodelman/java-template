@@ -21,5 +21,7 @@ jobs:
         run: echo "Deploying to production server on branch $GITHUB_HEAD_REF"
       - name: logs
         run: echo "Deploying to production server on branch $GITHUB_BASE_REF"
+      - name: logs
+        run: echo "Deploying to production server on branch ${{steps.branch-name.outputs.current_branch}}"
       - name: docker
         run: docker build -t a .
