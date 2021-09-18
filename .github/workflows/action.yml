@@ -23,6 +23,6 @@ jobs:
         run: echo "Deploying to production server on branch $GITHUB_BASE_REF"
       - name: logs
         run: |
-          echo "Running on default: ${{ steps.branch-name.outputs.is_default }}"
+          echo "Running on default: ${{ steps.branch-name.outputs.ref_branch }}"
   #    - name: docker
   #      run: docker build -t a .
