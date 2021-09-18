@@ -25,5 +25,5 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }} .
       - name: logs-create-docker
         run: |
-          echo "Create docker: ${{ secrets.DOCKER_USERNAME }}/${{ steps.branch-name.outputs.ref_branch }}"
+          echo "Create docker: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}/${{ steps.branch-name.outputs.ref_branch }}"
         
